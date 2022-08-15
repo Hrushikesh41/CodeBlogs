@@ -1,3 +1,3 @@
 # CodeBlogs
 
-A Bloggong website for developers where they can write technology based Content
+A Blogging website for developers where they can write technology based Content
