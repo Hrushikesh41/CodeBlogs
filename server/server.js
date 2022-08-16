@@ -4,12 +4,17 @@ require("./db/conn");
 const userModels = require("./models/user.models")
 
 const app = express();
-dotenv.config({path : "config.env"})
+app.use(express.json());
+dotenv.config({path : "config.env"});
 
-app.get("/", (req, res)=>{
+const PORT = process.env.PORT || 3001;
+
+app.use(require("./routes/register"));
+
+app.post("/", (req, res)=>{
     res.send("Hello Bloggers")
 });
 
-app.listen(process.env.PORT, ()=>{
-    console.log("APP LISTENING AT PORT 3000");
+app.listen(PORT, ()=>{
+    console.log("APP LISTENING AT PORT : " + PORT);
 })
