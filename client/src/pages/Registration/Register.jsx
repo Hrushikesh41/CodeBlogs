@@ -1,5 +1,5 @@
 import react, { useState } from "react";
-import { IoIosRocket } from "react-icons/io"
+import { useNavigate } from "react-router-dom";
 import "./Register.css"
 import bg1 from "../../assets/bg1.jpg"
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,23 +8,26 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Registration = () => {
 
-   const [details , setDetails] = useState({
-    name : "",
-    email : "",
-    password : "",
-    cpass : ""
-   })
+    const [details, setDetails] = useState({
+        name: "",
+        email: "",
+        password: "",
+        cpass: ""
+    });
 
-    const handleChange = (e)=>{
-        setDetails({...details, [e.target.name] : e.target.value})
+    const navigate = useNavigate();
+
+
+    const handleChange = (e) => {
+        setDetails({ ...details, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("Button Clicked");
 
-        if(details.name == "" || details.email == "" || details.password == "" || details.cpass == ""){
-            toast.error('Plaese Enter all Fields', {
+        if (details.name == "" || details.email == "" || details.password == "" || details.cpass == "") {
+            toast.error('Please Enter all Fields', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -32,8 +35,8 @@ const Registration = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });
-        }else if(details.password.length <6 || details.cpass.length < 6){
+            });
+        } else if (details.password.length < 6 || details.cpass.length < 6) {
             toast.error('Password Should Have atleast 6 Characters !!!', {
                 position: "top-right",
                 autoClose: 5000,
@@ -55,21 +58,52 @@ const Registration = () => {
                 progress: undefined,
             });
         }
-        else{
-            toast('🦄 Wow so easy!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
+        else {
+
+            const { name, email, password } = details;
+
+            const res = await fetch("http://localhost:3000/addblogger", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name, email, password
+                })
+            });
+
+            const result = await res.json();
+
+            if (result) {
+                toast('✌️ Registration Successful', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
                 });
+
+                navigate("/login", {replace: true});
+            } else {
+                toast.error('Error Occurred !!!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+
+
         }
     }
     return (
         <>
-         <ToastContainer />
+            <ToastContainer />
 
             <div className="container">
 
@@ -78,12 +112,13 @@ const Registration = () => {
                     <div className="user_inputs">
                         <h1>Create an Account</h1>
 
-                        <form className="form_inputs" onSubmit={handleSubmit}>
+                        <form method="post" className="form_inputs" onSubmit={handleSubmit}>
                             <input
                                 type="text"
                                 name="name"
                                 onChange={handleChange}
                                 placeholder="Enter Your Name"
+                                autoComplete="off"
                             />
 
                             <input
@@ -91,6 +126,7 @@ const Registration = () => {
                                 name="email"
                                 onChange={handleChange}
                                 placeholder="Enter Your Email"
+                                autoComplete="off"
                             />
 
                             <input
@@ -98,6 +134,7 @@ const Registration = () => {
                                 name="password"
                                 onChange={handleChange}
                                 placeholder="Enter Your Password"
+                                autoComplete="off"
                             />
 
                             <input
@@ -105,6 +142,7 @@ const Registration = () => {
                                 name="cpass"
                                 onChange={handleChange}
                                 placeholder="Enter Your Password Again"
+                                autoComplete="off"
                             />
 
                             <div className="redirect">
@@ -113,10 +151,10 @@ const Registration = () => {
 
                             <div className="submit_data">
                                 <button type="submit">Register</button>
-                               
+
                             </div>
                         </form>
-                       
+
                     </div>
 
 
