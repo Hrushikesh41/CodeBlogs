@@ -86,3 +86,33 @@
     font-weight: bold;
     font-size: 1rem;
 }
+
+@media (max-width : 1000px) {
+    .app_container{
+        flex-direction: column;
+    }
+
+    .app_container .left_container,
+    .app_container .right_container{
+        width: 100%;
+    }
+
+    .app_container .right_container{
+        margin-top: 3rem;
+        padding: 0;
+    }
+
+    .inner_container .inner_right_container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .inner_right_container .form_container{
+        margin-bottom: 1rem;
+        width: 70%;
+    }
+}
