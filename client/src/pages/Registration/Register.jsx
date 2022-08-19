@@ -24,7 +24,6 @@ const Registration = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Button Clicked");
 
         if (details.name == "" || details.email == "" || details.password == "" || details.cpass == "") {
             toast.error('Please Enter all Fields', {
