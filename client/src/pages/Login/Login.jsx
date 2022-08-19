@@ -1,8 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import login_bg from "../../assets/login_bg.jpg";
 import "./Login.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 const Login = ()=>{
+
+    const [info, setInfo] = useState({
+        email : "",
+        password : ""
+    });
+
+    const navigate = useNavigate();
+
+    const handleChange = (e)=>{
+        setInfo({...info, [e.target.name] : e.target.value});
+    }
+
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+
+        if(info.email == "" || info.password == ""){
+            toast.error('Please Enter all Fields', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }else{
+
+            const {email , password } = info;
+
+            const res = await fetch("http://localhost:3000/logblogger", {
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({
+                    email, password
+                })
+            });
+
+            const result = await res.json();
+            const status = await res.status;
+
+            if(status == 200){
+                toast('✌️ Login Successful', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+
+                navigate("/", {replace : true})
+            }else{
+                toast.error('Invalid Credentials', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+        }
+    }
+    
     return(
         <>
             <div className="app_container">
@@ -15,13 +86,14 @@ const Login = ()=>{
                         <p>Login Here</p>
 
                         <div className="inner_right_container">
-                            <form className="form_container">
+                            <form method="post" className="form_container" onSubmit={handleSubmit}>
 
                                 <input
                                 type="email"
                                 name="email"
                                 placeholder="Enter Your Email"
                                 autoComplete="off"
+                                onChange={handleChange}
                                 />
 
                                 <input 
@@ -29,6 +101,7 @@ const Login = ()=>{
                                 name="password"
                                 placeholder="Enter Your Password"
                                 autoComplete="off"
+                                onChange={handleChange}
                                 />
 
                                 <div className="redirect_blogger">
@@ -38,6 +111,7 @@ const Login = ()=>{
                                 <div className="login_btn">
                                     <button className="btn">Login</button>
                                 </div>
+                                <ToastContainer />
                             </form>
                         </div>
                     </div>
