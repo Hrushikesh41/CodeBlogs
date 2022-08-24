@@ -1,0 +1,36 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar .title{
+    display: flex;
+    justify-content: flex-start;
+    width: 30%;
+    margin-left: 1rem;
+}
+
+.navbar .btns{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: center;
+}
+
+.btns .blogs{
+    display: flex;
+    width: 50%;
+}
+
+.btns .accessBtn,
+.accessBtn .access,
+.accessBtn .denied{
+    width: 50%;
+}
+
+.btns .accessBtn,
+.access{
+    display: flex;
+    flex-direction: row;
+}

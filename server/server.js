@@ -25,7 +25,8 @@ dotenv.config({ path: "config.env" });
 const PORT = process.env.PORT || 3001;
 
 app.use(require("./routes/register"));
-app.use(require("./routes/login"))
+app.use(require("./routes/login"));
+app.use(require("./routes/UpdatePassword"));
 
 app.post("/", (req, res) => {
     res.send("Hello Bloggers")
