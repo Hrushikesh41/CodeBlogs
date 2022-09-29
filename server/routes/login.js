@@ -18,7 +18,9 @@ router.post("/logblogger", async (req, res)=>{
                 const fetchpass = await bcrypt.compare(password, fetchUser.password)
 
                 if(fetchpass){
-                    return res.status(200).json({message : "Login Successful"})
+                    const token = await fetchUser.generateAuthToken();
+                    console.log(token);
+                    return res.status(200).json({message : "Login Successful", token})
                 }else{
                     return res.status(404).json({error : "invalid Password"})
                 }

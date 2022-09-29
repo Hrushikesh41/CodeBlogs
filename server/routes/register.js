@@ -58,7 +58,7 @@ router.post("/addblogger", async(req, res)=>{
                 }
 
                 transporter.sendMail(mailOPtion, (error, info)=>{
-                    error ? console.log(error) : res.status(200).json({message : "OTP Sent to Your Email"});
+                   return error ? console.log(error) :  res.status(200).json({message : "OTP Sent to Your Email"});
                 })
             }
 

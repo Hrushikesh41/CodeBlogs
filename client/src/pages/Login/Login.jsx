@@ -46,7 +46,8 @@ const Login = ()=>{
             });
 
             const result = await res.json();
-            const status = await res.status;
+            const status = res.status;
+            localStorage.setItem("token", result.token)
 
             if(status == 200){
                 toast('✌️ Login Successful', {
