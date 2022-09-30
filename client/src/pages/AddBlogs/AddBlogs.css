@@ -1,0 +1,21 @@
+.upload_bar{
+    width: 100%;
+    height: 60px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.upload_bar_status, .upload_bar_status_2{
+    width: 100%;
+    height: 20px;
+    background-color: lightgray;
+    border-radius: 25px;
+    transition: 0.5s
+}
+
+.upload_bar_status_2{
+    background-color: darkgray;
+    transition: 0.5s
+}
