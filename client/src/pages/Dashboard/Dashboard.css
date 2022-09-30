@@ -1,0 +1,9 @@
+.blogData_container{
+    display: flex;
+    flex-direction: column;
+}
+
+img{
+    height: 20ppx;
+    width: 300px;
+}

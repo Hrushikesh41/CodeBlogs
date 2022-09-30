@@ -26,7 +26,6 @@
     "mongoose": "^6.5.2",
     "nodemailer": "^6.7.8",
     "react-icons": "^4.4.0",
-    "react-router-dom": "^6.3.0",
     "react-toastify": "^9.0.8"
   }
 }

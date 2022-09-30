@@ -14,12 +14,6 @@ router.post("/addblog", async (req,res)=>{
             const result = new blogModel({title, imageURL, blog});
             await result.save()
             return res.status(200).json({message : "Blog Added"})
-
-            
-
-            // if(insert){
-            // }else{
-                // }
                 
         } catch (error) {
             console.log(error);

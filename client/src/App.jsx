@@ -5,6 +5,8 @@ import Registration from "./pages/Registration/Register"
 import Login from './pages/Login/Login'
 import Verify from './pages/Verify/Verify'
 import AddBlogs from './pages/AddBlogs/AddBlogs'
+import BlogCard from './Components/BlogCard/BlogCard'
+import BlogPage from './pages/BlogPage/BlogPage'
 import "./index.css"
 
 
@@ -21,6 +23,8 @@ function App() {
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/verify' element={<Verify />} />
           <Route exact path='/write' element={<AddBlogs />} />
+          <Route exact path='/blog' element={<BlogPage />} />
+
 
         </Routes>
       </BrowserRouter>

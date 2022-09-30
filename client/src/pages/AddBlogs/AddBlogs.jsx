@@ -90,7 +90,7 @@ const AddBlogs = () => {
         }).then((res) => {
             console.log(res.status)
             if(res.status===200){
-                alert("Blog Uploaded");
+                navigate("/", {replace:true})
                 
             }else if(res.status===404){
                 alert("Please Enter title and Blog Content")

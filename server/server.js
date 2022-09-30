@@ -28,7 +28,8 @@ const PORT = process.env.PORT || 3001;
 app.use(require("./routes/register"));
 app.use(require("./routes/login"));
 app.use(require("./routes/UpdatePassword"));
-app.use(require("./routes/addBlogs"))
+app.use(require("./routes/addBlogs"));
+app.use(require("./routes/getBlogs"))
 
 app.post("/", (req, res) => {
     res.send("Hello Bloggers")
