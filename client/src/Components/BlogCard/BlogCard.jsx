@@ -5,11 +5,11 @@ const BlogCard = ({blogContent})=>{
     const navigate = useNavigate();
 
     const redirectBlog = (elem)=>{
-        navigate(`/blog?read=${elem}`, {replace:true})
+        navigate(`/blog/${elem}`, {replace:true})
     }
     return(
         <>
-            <div className="blog_container" onClick={()=>{redirectBlog(blogContent._id)}}>
+            <div className="blog_container" onClick={()=>{redirectBlog(blogContent.slugifiedTitle)}}>
                 <img src={blogContent.imageURL} alt="Loading..." />
 
                 <div className="blog_content">

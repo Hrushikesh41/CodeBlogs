@@ -5,15 +5,26 @@ const blogModel = require("../models/blogs.model")
 const router = express.Router();
 
 router.post("/addblog", async (req,res)=>{
-    const {title, imageURL, blog} = req.body;
+    const {title, imageURL, blog, slug} = req.body;
+    let slugifiedTitle = slug
+    console.log(slugifiedTitle);
 
     if(!title  || !blog){
         return res.status(404).json({error : "Please Enter Title and Blog Content Fields"})
     }else{
         try {
-            const result = new blogModel({title, imageURL, blog});
-            await result.save()
-            return res.status(200).json({message : "Blog Added"})
+            const upload = new blogModel({title, imageURL, blog, slugifiedTitle});
+            var result = await upload.save();
+            console.log(result);
+
+            if(!result){
+                res.json({
+                    message: "Some error occurred while adding a new blog! 🔴 ",
+                  });
+            }else{
+                return res.status(200).json({message : "Blog Added"})
+            }
+            
                 
         } catch (error) {
             console.log(error);

@@ -7,10 +7,14 @@ const blogSchema = new mongoose.Schema({
     },
     imageURL : {
         type : String,
+        required : true
     },
     blog : {
         type : String,
-        required: true
+        required : true
+    },
+    slugifiedTitle : {
+        type : String
     }
 });
 

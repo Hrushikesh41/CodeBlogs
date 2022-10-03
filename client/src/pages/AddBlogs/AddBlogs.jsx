@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import storage from "../../firebase";
 import "./AddBlogs.css"
-import { async } from "@firebase/util";
+import slugify from "slugify";
 
 const AddBlogs = () => {
     const [progress, setProgress] = useState(0);
@@ -73,9 +73,16 @@ const AddBlogs = () => {
     // console.log(blogDetails.imageURL);
 
     const uploadBlog = (imageUrl)=>{
+
+        
+
         const title = blogDetails.title;
         const imageURL = imageUrl;
         const blog = blogDetails.blog;
+        const slug = slugify(title, {
+            lower :true
+        })
+
 
         console.log(imageURL);
 
@@ -85,7 +92,7 @@ const AddBlogs = () => {
                 "Content-Type" : "application/json"
             },
             body:JSON.stringify({
-                title, imageURL, blog
+                title, imageURL, blog, slug
             })
         }).then((res) => {
             console.log(res.status)

@@ -4,6 +4,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
     const [auth, setAuth] = useState();
+    const navigate = useNavigate();
 
     const check = localStorage.getItem("token");
     
@@ -20,7 +21,7 @@ const Navbar = () => {
     return (
         <>
             <div className="navbar">
-                <div className="title">
+                <div className="title" onClick={()=>{navigate("/", {replace:true})}}>
                     <h1>CodeBlogs</h1>
                 </div>
 
@@ -28,9 +29,6 @@ const Navbar = () => {
                     <div className="blogs">
                         <div className="write">
                             <a href="/write">Write Blog</a>
-                        </div>
-                        <div className="profile">
-                            <button>My Profile</button>
                         </div>
                     </div>
 

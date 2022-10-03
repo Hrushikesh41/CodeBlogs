@@ -40,11 +40,18 @@ const Dashboard = () => {
 
                 <form method="get">
                     <div className="blogData_container">
-                        {blogDetails.map((blogContent, key) => {
-                            return (
-                                <BlogCard blogContent={blogContent} key={key} />
-                            )
-                        })}
+                        {blogDetails.length == 0 ? <>
+                            <div className="notFound">
+                                No Blogs to display
+                            </div>
+                        </> :
+                            blogDetails.map((blogContent, key) => {
+                                return (
+                                    <BlogCard blogContent={blogContent} key={key} />
+                                )
+                            })
+                        }
+
                     </div>
                 </form>
             </div>

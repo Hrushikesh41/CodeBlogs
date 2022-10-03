@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import BlogCard from "../../Components/BlogCard/BlogCard";
+import Navbar from "../../Components/Headers/Navbar"
 
-const BlogPage = ()=>{
+const BlogPage = () => {
+    const {slug} = useParams();
     const [blogDetails, setBlogDetails] = useState([]);
+    
+    console.log(slug);
 
-    const getBlog = async()=>{
-        const param = new URLSearchParams(window.location.search);
-        const id = param.get("read");
-
-        console.log(id);
+    const getBlog = async () => {
+        
 
         const res = await fetch("http://localhost:3000/getblogbyid", {
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json"
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
             },
-            body : JSON.stringify({
-                id
+            body: JSON.stringify({
+                slug
             })
         })
 
@@ -35,13 +37,14 @@ const BlogPage = ()=>{
         // }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getBlog();
     }, [])
 
 
-    return(
+    return (
         <>
+            <Navbar />
             <BlogCard blogContent={blogDetails} />
         </>
     )
