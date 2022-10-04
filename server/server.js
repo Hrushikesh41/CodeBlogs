@@ -29,7 +29,8 @@ app.use(require("./routes/register"));
 app.use(require("./routes/login"));
 app.use(require("./routes/UpdatePassword"));
 app.use(require("./routes/addBlogs"));
-app.use(require("./routes/getBlogs"))
+app.use(require("./routes/getBlogs"));
+app.use(require("./routes/getUserBlog"))
 
 app.post("/", (req, res) => {
     res.send("Hello Bloggers")

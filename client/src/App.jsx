@@ -7,6 +7,7 @@ import Verify from './pages/Verify/Verify'
 import AddBlogs from './pages/AddBlogs/AddBlogs'
 import BlogCard from './Components/BlogCard/BlogCard'
 import BlogPage from './pages/BlogPage/BlogPage'
+import Profile from './pages/Profile/Profile'
 import "./index.css"
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route exact path='/verify' element={<Verify />} />
           <Route exact path='/write' element={<AddBlogs />} />
           <Route exact path='/blog/:slug' element={<BlogPage />} />
+          <Route exact path='/profile' element={<Profile />} />
 
         </Routes>
       </BrowserRouter>
