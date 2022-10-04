@@ -25,7 +25,6 @@ function App() {
           <Route exact path='/write' element={<AddBlogs />} />
           <Route exact path='/blog/:slug' element={<BlogPage />} />
 
-
         </Routes>
       </BrowserRouter>
     </>

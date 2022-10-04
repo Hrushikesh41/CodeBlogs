@@ -1,11 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const BlogCard = ({blogContent})=>{
+
     const navigate = useNavigate();
 
     const redirectBlog = (elem)=>{
-        navigate(`/blog/${elem}`, {replace:true})
+      navigate(`/blog/${elem}`, {replace:true}) 
     }
     return(
         <>

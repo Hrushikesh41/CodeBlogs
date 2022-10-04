@@ -1,18 +1,22 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const blogModel = require("../models/blogs.model")
+const userModel = require("../models/user.models");
 
 const router = express.Router();
 
 router.post("/addblog", async (req,res)=>{
-    const {title, imageURL, blog, slug} = req.body;
+    const {title, imageURL, blog, slug, id} = req.body;
     let slugifiedTitle = slug
     console.log(slugifiedTitle);
+
+    console.log(id);
 
     if(!title  || !blog){
         return res.status(404).json({error : "Please Enter Title and Blog Content Fields"})
     }else{
         try {
+            const user = await userModel.findOneAndUpdate({_id : id}, {$push : {"blogs" : [title]}})
             const upload = new blogModel({title, imageURL, blog, slugifiedTitle});
             var result = await upload.save();
             console.log(result);

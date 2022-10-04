@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import storage from "../../firebase";
 import "./AddBlogs.css"
@@ -7,19 +7,21 @@ import slugify from "slugify";
 
 const AddBlogs = () => {
     const [progress, setProgress] = useState(0);
+    var token;
+    var id;
 
     const [blogDetails, setBlogDetails] = useState({
         title: "",
         imageURL: "",
         blog: ""
     });
+
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-
-        token ? null : navigate("/login", { replace: true })
-    }, []);
+    useEffect(()=>{
+        token = localStorage.getItem("token");
+        !token ? navigate("/login", {replace : true}) : id = localStorage.getItem("ID");
+    })
 
     const handleChange = (e)=>{
         setBlogDetails({...blogDetails, [e.target.name] : e.target.value})
@@ -92,7 +94,7 @@ const AddBlogs = () => {
                 "Content-Type" : "application/json"
             },
             body:JSON.stringify({
-                title, imageURL, blog, slug
+                title, imageURL, blog, slug, id
             })
         }).then((res) => {
             console.log(res.status)
