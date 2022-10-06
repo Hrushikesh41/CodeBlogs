@@ -38,8 +38,7 @@ const Dashboard = () => {
 
             <div className="app">
 
-                <form method="get">
-                    <div className="blogData_container">
+                <form method="get">            
                         {blogDetails.length == 0 ? <>
                             <div className="notFound">
                                 No Blogs to display
@@ -51,8 +50,6 @@ const Dashboard = () => {
                                 )
                             })
                         }
-
-                    </div>
                 </form>
             </div>
         </>

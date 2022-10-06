@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
+import BlogCard from "../../Components/BlogCard/BlogCard";
 import "./Profile.css"
 
 const Profile = ()=>{
     var token;
     var id;
 
-    const [title, setTilte] = useState([])
+    const [title, setTilte] = useState()
 
     const navigate = useNavigate()
 
     useEffect(()=>{
         token = localStorage.getItem("token");
         id = localStorage.getItem("ID");
-
-        console.log(id);
 
         if(!token){
             navigate("/login", {replace : true})
@@ -34,9 +33,8 @@ const Profile = ()=>{
         });
     
         const blogData = await res.json();
-        console.log(blogData.blogTitle);
         const blogTitle = blogData.blogTitle;
-        setTilte(title =>[...title, blogTitle]);
+        setTilte( blogTitle);
     }
 
     useEffect(()=>{
@@ -44,20 +42,32 @@ const Profile = ()=>{
     }, []);
 
     console.log(title);
+    localStorage.setItem("Blog Title", title)
+
+    // const handleClick = ()=>{
+    //     const allTitles = localStorage.getItem("Blog Title");
+
+    //     const titles = allTitles.split(",");
+        
+    //     title.forEach((element)=>{
+    //         element.forEach((elem)=>{
+              
+    //         })
+    //     })
+    // }
 
     return(
         <>
             <h1>Your Profile</h1>
-            {title.map((element, key)=>{
-                localStorage.setItem("Blog Title", element)
-                return element.map((blog, key)=>{
-                    return (
-                    <>
-                        <div>{blog}</div>
-                    </>
-                )
+            {
+                title.map((element, key)=>{
+                    return(
+                        <>
+                            <div>{element}</div>
+                        </>
+                    )
                 })
-            })}
+            }
         </>
     )
 }
