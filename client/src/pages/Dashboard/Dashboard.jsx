@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "../../Components/BlogCard/BlogCard";
 import Navbar from "../../Components/Headers/Navbar";
+import HomeBlogCard from "../../Components/BlogCard/HomeBlogCard";
 import "./Dashboard.css"
 
 const Dashboard = () => {
@@ -46,7 +47,7 @@ const Dashboard = () => {
                         </> :
                             blogDetails.map((blogContent, key) => {
                                 return (
-                                    <BlogCard blogContent={blogContent} key={key} />
+                                    <HomeBlogCard blogContent={blogContent} key={key} />
                                 )
                             })
                         }

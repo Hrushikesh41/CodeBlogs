@@ -25,6 +25,11 @@ const BlogPage = () => {
         const data = await res.json();
         console.log(data.blogDetails.title);
 
+        const splitTitle = data.blogDetails.title.split(" ");
+
+        console.log(splitTitle.splice(0, 2));
+
+
         setBlogDetails(data.blogDetails)
         console.log(blogDetails);
 

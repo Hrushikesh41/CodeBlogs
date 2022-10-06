@@ -25,7 +25,6 @@ router.post("/getblogbyid", async (req, res)=>{
         if(!slug){
             return res.status(404).json({error : "Slug Not Found"})
         }else{
-            console.log(slug);
             const result = await blogModel.findOne({slugifiedTitle: slug});
 
             return res.status(200).json({blogDetails : result})
