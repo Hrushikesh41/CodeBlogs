@@ -30,12 +30,14 @@ app.use(require("./routes/login"));
 app.use(require("./routes/UpdatePassword"));
 app.use(require("./routes/addBlogs"));
 app.use(require("./routes/getBlogs"));
-app.use(require("./routes/getUserBlog"))
+app.use(require("./routes/getUserBlog"));
+app.use(require("./routes/UpdateLikes"))
 
 app.post("/", (req, res) => {
     res.send("Hello Bloggers")
 });
 
 app.listen(PORT, () => {
+    console.log("hello")
     console.log("APP LISTENING AT PORT : " + PORT);
 })
