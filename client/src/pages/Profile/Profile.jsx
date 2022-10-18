@@ -7,20 +7,13 @@ const Profile = ()=>{
     var token;
     var id;
 
-    const [title, setTilte] = useState()
+    const [title, setTilte] = useState([])
+    // const [userId, setUserId] = useState("")
 
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        token = localStorage.getItem("token");
-        id = localStorage.getItem("ID");
-
-        if(!token){
-            navigate("/login", {replace : true})
-        }
-    }, []);
-
-    const getUserBlogs = async ()=>{
+    const getUserBlogs = async (id) => {
+        // console.log(userId);
         
         const res = await fetch("http://localhost:3000/userblogs", {
             method : "POST",
@@ -28,18 +21,33 @@ const Profile = ()=>{
                 "Content-Type" : "application/json"
             },
             body : JSON.stringify({
-                id
+                id: id
             })
         });
     
         const blogData = await res.json();
+        // console.log(blogData);
         const blogTitle = blogData.blogTitle;
-        setTilte( blogTitle);
+        setTilte(blogTitle);
     }
 
     useEffect(()=>{
-        getUserBlogs();
+        token = localStorage.getItem("token");
+        id = localStorage.getItem("ID");
+        // setUserId(localStorage.getItem("ID"))
+        console.log(id);
+        
+        if(!token){
+            navigate("/login", {replace : true})
+        }
+        getUserBlogs(id);
     }, []);
+
+    
+
+    // useEffect(()=>{
+    //     getUserBlogs();
+    // });
 
     console.log(title);
     localStorage.setItem("Blog Title", title)
@@ -60,7 +68,7 @@ const Profile = ()=>{
         <>
             <h1>Your Profile</h1>
             {
-                title.map((element, key)=>{
+                title.length !== 0 && title.map((element, key)=>{
                     return(
                         <>
                             <div>{element}</div>

@@ -1,27 +1,60 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./BlogCard.css"
 
 const BlogCard = ({ blogContent }) => {
 
-    const navigate = useNavigate();
-    const [likes, setLikes] = useState(0);
-    const [className , setClassName] = useState(false);
+    const {slug} = useParams();
+    const[id, setID] = useState();
+    const [reactions, setReaction] = useState();
+    const [likes, setLikes] = useState(true);
+    const [className, setClassName] = useState(false);
 
-    const sendLikes = ()=>{
-        setClassName((prev)=>{
+    const getBlogData = async () => {
+
+        const res = await fetch("http://localhost:3000/getblogbyid", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                slug
+            })
+        });
+
+        const data = await res.json();
+        setID(data.blogDetails._id);
+        setReaction(data.blogDetails.likes)
+
+    }
+
+    useEffect(() => {
+        getBlogData();
+    }, [])
+
+
+    const updatedlikes = async () => {
+
+        const res = await fetch("http://localhost:3000/updatelikes", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id, likes, reactions
+            })
+        });
+        const data = await res.json();
+        console.log(data);
+        getBlogData();
+    }
+
+
+    const sendLikes = async () => {
+        setClassName((prev) => {
             return !prev
         });
 
-        if(className == false){
-            setLikes(likes + 1);
-        }else if(className == true){
-            if(likes == 0){
-                setLikes(likes)
-            }else{
-                setLikes(likes-1)
-            }
-        }
     }
 
 
@@ -45,12 +78,12 @@ const BlogCard = ({ blogContent }) => {
 
                 </div>
 
-                <div className="reactions">
-                        <i class="fa fa-2x fa-heart-o" onClick={sendLikes} style={className === true ? {color:"red"} : {}}></i>
-                        <div className="likes">
-                            {likes}
-                        </div>
+                <div className="reactions" onClick={() => {setLikes(!likes); updatedlikes()}}>
+                    <i class="fa fa-2x fa-heart-o" onClick={sendLikes} style={className === true ? { color: "red" } : {}}></i>
+                    <div className="likes">
+                        {reactions}
                     </div>
+                </div>
             </div>
         </>
     )

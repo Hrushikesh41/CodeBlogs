@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLinkClickHandler, useNavigate, useParams } from "react-router-dom";
 import BlogCard from "../../Components/BlogCard/BlogCard";
 import Navbar from "../../Components/Headers/Navbar"
 
@@ -24,11 +24,6 @@ const BlogPage = () => {
 
         const data = await res.json();
         console.log(data.blogDetails.title);
-
-        const splitTitle = data.blogDetails.title.split(" ");
-
-        console.log(splitTitle.splice(0, 2));
-
 
         setBlogDetails(data.blogDetails)
         console.log(blogDetails);
