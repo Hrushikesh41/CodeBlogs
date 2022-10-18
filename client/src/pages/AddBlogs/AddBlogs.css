@@ -20,6 +20,69 @@
     transition: 0.5s
 }
 
-form {
-    display:flex;
+.home{
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0 1rem 0;
+}
+
+.home h1{
+    width: 90%;
+    padding: 1rem;
+}
+
+.home i{
+    margin-top: 1.5rem;
+    cursor: pointer;
+}
+
+.addBlog{
+    display: flex;
+    width: 100vw;
+    justify-content:center;
+}
+
+.addBlog form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 50%;
+    font-size: 1.8rem;
+    background-color: rgb(231 227 227);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.addBlog form input{
+    padding: 0.5rem;
+    width: 50%;
+    outline: none;
+}
+
+.addBlog form textarea{
+    outline: none;
+    border: 1px solid black;
+}
+
+input:nth-child(odd){
+    border: 1px solid black;
+    font-size: 1.5rem;
+}
+
+.addBlog form label sup{
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+}
+
+.addBlog form button{
+    width: 20%;
+    margin: 0 auto;
+    padding: 0.7rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-weight: bold;
 }

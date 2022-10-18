@@ -18,13 +18,13 @@ const AddBlogs = () => {
 
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         token = localStorage.getItem("token");
-        !token ? navigate("/login", {replace : true}) : id = localStorage.getItem("ID");
+        !token ? navigate("/login", { replace: true }) : id = localStorage.getItem("ID");
     })
 
-    const handleChange = (e)=>{
-        setBlogDetails({...blogDetails, [e.target.name] : e.target.value})
+    const handleChange = (e) => {
+        setBlogDetails({ ...blogDetails, [e.target.name]: e.target.value })
     }
 
     const handleUpload = async (e) => {
@@ -53,7 +53,7 @@ const AddBlogs = () => {
             () => {
                 try {
                     getDownloadURL(upload.snapshot.ref).then((downloadURL) => {
-                        setBlogDetails((prev)=> {return {...prev, imageURL:downloadURL}})
+                        setBlogDetails((prev) => { return { ...prev, imageURL: downloadURL } })
                         // blogDetails.imageURL !== "" && uploadBlog();
                         return downloadURL !== null ? Promise.resolve(downloadURL) : Promise.reject(false)
                     }).then((value) => {
@@ -67,84 +67,89 @@ const AddBlogs = () => {
                 }
             },
         )
-
-        
-
     }
 
     // console.log(blogDetails.imageURL);
 
-    const uploadBlog = (imageUrl)=>{
+    const uploadBlog = (imageUrl) => {
 
-        
+
 
         const title = blogDetails.title;
         const imageURL = imageUrl;
         const blog = blogDetails.blog;
         const slug = slugify(title, {
-            lower :true
+            lower: true
         })
 
 
         console.log(imageURL);
 
         fetch("http://localhost:3000/addblog", {
-            method : "POST",
-            headers:{
-                "Content-Type" : "application/json"
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
             },
-            body:JSON.stringify({
+            body: JSON.stringify({
                 title, imageURL, blog, slug, id
             })
         }).then((res) => {
             console.log(res.status)
-            if(res.status===200){
-                navigate("/", {replace:true})
-                
-            }else if(res.status===404){
+            if (res.status === 200) {
+                navigate("/", { replace: true })
+
+            } else if (res.status === 404) {
                 alert("Please Enter title and Blog Content")
-            }else{
+            } else {
                 alert("Something Went Wrong")
             }
             return res.json()
         }).then((data) => {
             console.log(data)
         })
-
         // const result =  res.json;
         // const status = res.status;
         // console.log(status)
+    }
 
-        
+    const handleRedirect = () => {
+        navigate("/", { replace: true })
     }
 
     return (
         <>
-            <h1>Write Blogs</h1>
+            <div className="home">
+                <h1>Write Blogs</h1>
+                <i class="fa fa-2x fa-home" onClick={handleRedirect}></i>
+            </div>
 
-            <form onSubmit={handleUpload}>
+            <div className="addBlog">
+                <form onSubmit={handleUpload}>
 
-                <label htmlFor="title">Title</label>
-                <input 
-                type="text" 
-                onChange={handleChange}
-                name="title"
-                />
+                    <label htmlFor="title">Title<sup>*</sup></label>
+                    <input
+                        type="text"
+                        onChange={handleChange}
+                        name="title"
+                    />
+                    <label htmlFor="desc">Description <sup>*</sup></label>
 
-               <textarea 
-               rows="10" 
-               cols="10"
-               name="blog"
-               onChange={handleChange}
-               ></textarea>
+                    <textarea
+                        rows="10"
+                        cols="10"
+                        name="blog"
+                        onChange={handleChange}
+                    ></textarea>
 
-                <input
-                    type="file"
-                    accept="image/*"
-                />
+                     <label htmlFor="image">Cover Image  <sup>*</sup></label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                    />
 
-                <button>Upload</button>
-            </form>
+                    <button>Upload</button>
+                </form>
+            </div>
 
             {progress === 0 ? null : (
                 <div className="upload_bar">
