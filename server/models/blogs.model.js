@@ -15,6 +15,9 @@ const blogSchema = new mongoose.Schema({
     },
     slugifiedTitle : {
         type : String
+    },
+    likes : {
+        type : Number
     }
 });
 

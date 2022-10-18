@@ -9,17 +9,15 @@ router.post("/addblog", async (req,res)=>{
     const {title, imageURL, blog, slug, id} = req.body;
     let slugifiedTitle = slug
     console.log(slugifiedTitle);
-
-    console.log(id);
+    let likes = 0;
 
     if(!title  || !blog){
         return res.status(404).json({error : "Please Enter Title and Blog Content Fields"})
     }else{
         try {
             const user = await userModel.findOneAndUpdate({_id : id}, {$push : {"blogs" : [title]}})
-            const upload = new blogModel({title, imageURL, blog, slugifiedTitle});
+            const upload = new blogModel({title, imageURL, blog, slugifiedTitle, likes});
             var result = await upload.save();
-            console.log(result);
 
             if(!result){
                 res.json({
@@ -31,7 +29,6 @@ router.post("/addblog", async (req,res)=>{
             
                 
         } catch (error) {
-            console.log(error);
             return res.status(500).json({error : "Something Went Wrong"})
         }
     }
