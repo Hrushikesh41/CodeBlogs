@@ -19,3 +19,7 @@
     background-color: darkgray;
     transition: 0.5s
 }
+
+form {
+    display:flex;
+}
