@@ -7,6 +7,7 @@ import Navbar from "../../Components/Headers/Navbar";
 const Profile = () => {
     var token;
     var id;
+    var CreadtedBy;
 
     const [details, setDetails] = useState({
         name: "",
@@ -17,7 +18,7 @@ const Profile = () => {
 
     const navigate = useNavigate()
 
-    const getUserBlogs = async (id) => {
+    const getUserBlogs = async (id, createdby) => {
 
         const res = await fetch("http://localhost:3000/userblogs", {
             method: "POST",
@@ -25,12 +26,11 @@ const Profile = () => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                id: id
+                id: id, createdby: createdby
             })
         });
 
         const blogData = await res.json();
-        console.log(blogData);
 
         setDetails({
             name: blogData.name,
@@ -41,20 +41,28 @@ const Profile = () => {
         setTilte(blogTitle);
     }
 
+    console.log(title);
+
     useEffect(() => {
         token = localStorage.getItem("token");
         id = localStorage.getItem("ID");
+        CreadtedBy = localStorage.getItem("CreatedBy")
+
         // setUserId(localStorage.getItem("ID"))
 
         if (!token) {
             navigate("/login", { replace: true })
         }
-        getUserBlogs(id);
+        getUserBlogs(id, CreadtedBy);
     }, []);
     localStorage.setItem("Blog Title", title);
 
     const handleRedirect = () => {
         navigate("/", { replace: true })
+    }
+
+    const redirectBlog = (elem) => {
+        const redirect = navigate(`/blog/${elem}`, { replace: true })
     }
 
     return (
@@ -70,13 +78,23 @@ const Profile = () => {
             <div className="parent_app">
                 <div className="parent">
                     {
-                        title.length !== 0 && title.map((element, key) => {
+                        title.map((element, key) => {
                             return (
                                 <>
 
-                                    <div className="blogHeading">{element}</div>
-                                    <hr />
+                                    <div className="blogHeading">
+                                        <div className="titleHead">
+                                            <div className="title">
+                                                {element.title}
+                                            </div>
+                                            <div className="redirect" onClick={() => { redirectBlog(element.slugifiedTitle) }}> Read More . . .</div>
 
+                                        </div>
+
+                                        <div className="reaction">
+                                            <i class="fa fa-heart-o"></i> {element.likes}
+                                        </div>
+                                    </div>
 
                                 </>
                             )

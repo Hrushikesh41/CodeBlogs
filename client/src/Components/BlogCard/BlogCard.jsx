@@ -25,6 +25,7 @@ const BlogCard = ({ blogContent }) => {
         });
 
         const data = await res.json();
+        localStorage.setItem("CreatedBy", data.blogDetails.CreadtedBy)
         setID(data.blogDetails._id);
         setReaction(data.blogDetails.likes)
 
