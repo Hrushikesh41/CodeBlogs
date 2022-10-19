@@ -1,3 +1,11 @@
+.redirectHome{
+    display: flex;
+    margin-top: 1rem;
+    justify-content: flex-end;
+    margin-right: 3rem;
+    cursor: pointer;
+}
+
 .blog_container{
     display: flex;
     justify-content: center;

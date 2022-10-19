@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom"
 import BlogCard from "../../Components/BlogCard/BlogCard";
 import "./Profile.css"
+import Navbar from "../../Components/Headers/Navbar";
 
 const Profile = ()=>{
     var token;
     var id;
+
+    const [details, setDetails] = useState({
+        name:"",
+        email : ""
+    })
 
     const [title, setTilte] = useState([])
     // const [userId, setUserId] = useState("")
@@ -26,7 +32,12 @@ const Profile = ()=>{
         });
     
         const blogData = await res.json();
-        // console.log(blogData);
+        
+        setDetails({
+            name : blogData.name,
+            email : blogData.email
+        })
+
         const blogTitle = blogData.blogTitle;
         setTilte(blogTitle);
     }
@@ -42,8 +53,6 @@ const Profile = ()=>{
         }
         getUserBlogs(id);
     }, []);
-
-    
 
     // useEffect(()=>{
     //     getUserBlogs();
@@ -66,7 +75,10 @@ const Profile = ()=>{
 
     return(
         <>
-            <h1>Your Profile</h1>
+        <Navbar />
+            <h1>Welcome : {details.name}</h1>
+
+            <h3></h3>
             {
                 title.length !== 0 && title.map((element, key)=>{
                     return(

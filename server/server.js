@@ -38,6 +38,5 @@ app.post("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log("hello")
     console.log("APP LISTENING AT PORT : " + PORT);
 })

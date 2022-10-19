@@ -23,6 +23,8 @@ const Navbar = () => {
         setShowUser((prev)=>{
             return !prev
         })
+
+        navigate("/profile", {replace : true})
     }
 
     return (

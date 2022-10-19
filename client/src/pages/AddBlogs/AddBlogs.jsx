@@ -73,8 +73,6 @@ const AddBlogs = () => {
 
     const uploadBlog = (imageUrl) => {
 
-
-
         const title = blogDetails.title;
         const imageURL = imageUrl;
         const blog = blogDetails.blog;
@@ -96,7 +94,7 @@ const AddBlogs = () => {
         }).then((res) => {
             console.log(res.status)
             if (res.status === 200) {
-                navigate("/", { replace: true })
+                navigate(`/blog/${slug}`, { replace: true })
 
             } else if (res.status === 404) {
                 alert("Please Enter title and Blog Content")

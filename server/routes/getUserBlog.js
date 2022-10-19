@@ -14,10 +14,12 @@ router.post("/userblogs", async (req, res)=>{
         try {
             const user = await userModel.findOne({_id: id});
             // console.log(user);
+            const name = user.name;
+            const email = user.email;
             const blogsTitle = await user.blogs
 
             if(user){
-                return res.status(200).json({message : "Blogs Found", blogTitle : blogsTitle})
+                return res.status(200).json({message : "Blogs Found", blogTitle : blogsTitle, name:name, email:email})
             }else{
                 return res.status(500).json({error : "Error Occurred in fetching Blogs"})
             }

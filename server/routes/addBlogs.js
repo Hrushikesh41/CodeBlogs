@@ -8,7 +8,6 @@ const router = express.Router();
 router.post("/addblog", async (req,res)=>{
     const {title, imageURL, blog, slug, id} = req.body;
     let slugifiedTitle = slug
-    console.log(slugifiedTitle);
     let likes = 0;
 
     if(!title  || !blog){
@@ -26,7 +25,6 @@ router.post("/addblog", async (req,res)=>{
             }else{
                 return res.status(200).json({message : "Blog Added"})
             }
-            
                 
         } catch (error) {
             return res.status(500).json({error : "Something Went Wrong"})

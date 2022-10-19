@@ -4,8 +4,10 @@ import "./BlogCard.css"
 
 const BlogCard = ({ blogContent }) => {
 
-    const {slug} = useParams();
-    const[id, setID] = useState();
+    const navigate = useNavigate();
+
+    const { slug } = useParams();
+    const [id, setID] = useState();
     const [reactions, setReaction] = useState();
     const [likes, setLikes] = useState(true);
     const [className, setClassName] = useState(false);
@@ -54,13 +56,17 @@ const BlogCard = ({ blogContent }) => {
         setClassName((prev) => {
             return !prev
         });
-
     }
 
-
+    const handleRedirect = () => {
+        navigate("/", { replace: true })
+    }
 
     return (
         <>
+            <div className="redirectHome">
+                <i class="fa fa-2x fa-home" onClick={handleRedirect}></i>
+            </div>
             <div className="blog_container">
                 <div className="blog_app">
                     <div className="image">
@@ -78,7 +84,7 @@ const BlogCard = ({ blogContent }) => {
 
                 </div>
 
-                <div className="reactions" onClick={() => {setLikes(!likes); updatedlikes()}}>
+                <div className="reactions" onClick={() => { setLikes(!likes); updatedlikes() }}>
                     <i class="fa fa-2x fa-heart-o" onClick={sendLikes} style={className === true ? { color: "red" } : {}}></i>
                     <div className="likes">
                         {reactions}
