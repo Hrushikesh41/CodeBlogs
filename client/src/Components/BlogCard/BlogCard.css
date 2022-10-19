@@ -72,3 +72,17 @@
 .reactions .react{
     border: 1px solid red;
 }
+
+.heading p{
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+    font-weight: bolder;
+    text-decoration: underline;
+    margin-left: 0.5rem;
+}
+
+.blog_content .blog .content{
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin-top: 1rem;
+}

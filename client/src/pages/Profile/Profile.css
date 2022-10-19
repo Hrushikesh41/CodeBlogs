@@ -1,0 +1,49 @@
+.profileHeading{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.email{
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.profile{
+    margin-top: 3rem;
+    margin-left: 2rem;
+}
+
+.parent_app{
+    display: flex;
+    justify-content: center;
+}
+
+.parent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    border: 1px solid black;
+    width: 40%;
+    padding: 1rem 0 1rem 0;
+    border-radius: 10px;
+}
+
+.blogHeading{
+    font-size: 1.6rem;
+    width: 100%;
+    text-align: center;
+}
+
+hr{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+hr:last-child{
+    width: 0%;
+    margin-top: 0;
+    margin-bottom: 0;
+}

@@ -62,6 +62,8 @@ const BlogCard = ({ blogContent }) => {
         navigate("/", { replace: true })
     }
 
+    console.log(blogContent);
+
     return (
         <>
             <div className="redirectHome">
@@ -76,6 +78,7 @@ const BlogCard = ({ blogContent }) => {
                     <div className="blog_content">
                         <div className="heading">
                             <h1>{blogContent.title}</h1>
+                            <p><i>By {blogContent.CreadtedBy}</i></p>
                         </div>
                         <div className="blog">
                             <div className="content">{blogContent.blog}</div>

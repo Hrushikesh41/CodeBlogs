@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.post("/userblogs", async (req, res)=>{
     const id = req.body.id;
-    console.log(req.body);
 
     if(!id){
         return res.status(404).json({error : "Pleae Enter ID"})

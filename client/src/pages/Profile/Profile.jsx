@@ -1,93 +1,90 @@
 import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import BlogCard from "../../Components/BlogCard/BlogCard";
 import "./Profile.css"
 import Navbar from "../../Components/Headers/Navbar";
 
-const Profile = ()=>{
+const Profile = () => {
     var token;
     var id;
 
     const [details, setDetails] = useState({
-        name:"",
-        email : ""
+        name: "",
+        email: ""
     })
 
-    const [title, setTilte] = useState([])
-    // const [userId, setUserId] = useState("")
+    const [title, setTilte] = useState([]);
 
     const navigate = useNavigate()
 
     const getUserBlogs = async (id) => {
-        // console.log(userId);
-        
+
         const res = await fetch("http://localhost:3000/userblogs", {
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json"
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
             },
-            body : JSON.stringify({
+            body: JSON.stringify({
                 id: id
             })
         });
-    
+
         const blogData = await res.json();
-        
+        console.log(blogData);
+
         setDetails({
-            name : blogData.name,
-            email : blogData.email
+            name: blogData.name,
+            email: blogData.email
         })
 
         const blogTitle = blogData.blogTitle;
         setTilte(blogTitle);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         token = localStorage.getItem("token");
         id = localStorage.getItem("ID");
         // setUserId(localStorage.getItem("ID"))
-        console.log(id);
-        
-        if(!token){
-            navigate("/login", {replace : true})
+
+        if (!token) {
+            navigate("/login", { replace: true })
         }
         getUserBlogs(id);
     }, []);
+    localStorage.setItem("Blog Title", title);
 
-    // useEffect(()=>{
-    //     getUserBlogs();
-    // });
+    const handleRedirect = () => {
+        navigate("/", { replace: true })
+    }
 
-    console.log(title);
-    localStorage.setItem("Blog Title", title)
-
-    // const handleClick = ()=>{
-    //     const allTitles = localStorage.getItem("Blog Title");
-
-    //     const titles = allTitles.split(",");
-        
-    //     title.forEach((element)=>{
-    //         element.forEach((elem)=>{
-              
-    //         })
-    //     })
-    // }
-
-    return(
+    return (
         <>
-        <Navbar />
-            <h1>Welcome : {details.name}</h1>
+            <Navbar />
+            <div className="redirectHome">
+                <i class="fa fa-2x fa-home" onClick={handleRedirect}></i>
+            </div>
+            <h2 className="profileHeading">Welcome 👋</h2>
+            <h1 className="profileHeading"> {details.name}</h1>
+            <p className="email">{details.email}</p>
+            <h2 className="profile">Your Blogs : </h2>
+            <div className="parent_app">
+                <div className="parent">
+                    {
+                        title.length !== 0 && title.map((element, key) => {
+                            return (
+                                <>
 
-            <h3></h3>
-            {
-                title.length !== 0 && title.map((element, key)=>{
-                    return(
-                        <>
-                            <div>{element}</div>
-                        </>
-                    )
-                })
-            }
+                                    <div className="blogHeading">{element}</div>
+                                    <hr />
+
+
+                                </>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+
         </>
     )
 }
