@@ -139,10 +139,12 @@ const AddBlogs = () => {
                         onChange={handleChange}
                     ></textarea>
 
-                     <label htmlFor="image">Cover Image  <sup>*</sup></label>
+                    <label htmlFor="image" id="uploadLabel">Cover Image  <sup>*</sup></label>
                     <input
                         type="file"
                         accept="image/*"
+                        id="image"
+                        style={{display: 'none'}}
                     />
 
                     <button>Upload</button>

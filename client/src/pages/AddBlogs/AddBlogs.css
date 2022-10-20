@@ -40,33 +40,66 @@
     display: flex;
     width: 100vw;
     justify-content:center;
+    padding: 2rem 0;
 }
 
 .addBlog form{
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    width: 50%;
+    width: 90%;
+    max-width: 35rem;
     font-size: 1.8rem;
     background-color: rgb(231 227 227);
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 10px;
 }
 
 .addBlog form input{
     padding: 0.5rem;
-    width: 50%;
+    /* width: 50%; */
     outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: rgba(69, 69, 69, 0.206);
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
 }
 
 .addBlog form textarea{
     outline: none;
-    border: 1px solid black;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: rgba(69, 69, 69, 0.206);
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 1rem;
 }
 
 input:nth-child(odd){
     border: 1px solid black;
     font-size: 1.5rem;
+}
+
+.addBlog form label#uploadLabel{
+    background-color: rgba(0, 0, 0, 0.582);
+    color: white;
+    width: 20rem;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+}
+
+.addBlog form label#uploadLabel sup{
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
 }
 
 .addBlog form label sup{
@@ -76,13 +109,13 @@ input:nth-child(odd){
 }
 
 .addBlog form button{
-    width: 20%;
+    width: max-content;
     margin: 0 auto;
-    padding: 0.7rem;
+    padding: 0.5rem 1rem;
     font-size: 1.2rem;
     cursor: pointer;
     background-color: white;
-    border: 1px solid black;
+    border: none;
     border-radius: 10px;
     font-weight: bold;
 }

@@ -100,6 +100,9 @@ const Login = ()=>{
                                 <div className="redirect_blogger">
                                     <a href="/signup">Create An Account</a>
                                 </div>
+                                <div className="redirect_blogger">
+                                    <a href="/update">Forgot Password</a>
+                                </div>
 
                                 <div className="login_btn">
                                     <button className="btn">Login</button>

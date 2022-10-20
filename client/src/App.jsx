@@ -8,6 +8,7 @@ import AddBlogs from './pages/AddBlogs/AddBlogs'
 import BlogCard from './Components/BlogCard/BlogCard'
 import BlogPage from './pages/BlogPage/BlogPage'
 import Profile from './pages/Profile/Profile'
+import UpdatePassword from './pages/UpdatePassword/UpdatePassword'
 import "./index.css"
 
 
@@ -26,7 +27,7 @@ function App() {
           <Route exact path='/write' element={<AddBlogs />} />
           <Route exact path='/blog/:slug' element={<BlogPage />} />
           <Route exact path='/profile' element={<Profile />} />
-
+          <Route exact path='/update' element={<UpdatePassword />} />
         </Routes>
       </BrowserRouter>
     </>
