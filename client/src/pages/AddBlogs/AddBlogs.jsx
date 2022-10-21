@@ -118,7 +118,7 @@ const AddBlogs = () => {
         <>
             <div className="home">
                 <h1>Write Blogs</h1>
-                <i class="fa fa-2x fa-home" onClick={handleRedirect}></i>
+                <i className="fa fa-2x fa-home" onClick={handleRedirect}></i>
             </div>
 
             <div className="addBlog">
