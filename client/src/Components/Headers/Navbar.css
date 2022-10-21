@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     box-shadow: 0 8px 6px -6px black;
     padding: 1rem;
 }
@@ -9,14 +10,13 @@
 .navbar .title{
     display: flex;
     justify-content: flex-start;
-    width: 65%;
     margin-left: 1rem;
 }
 
 .navbar .btns{
     display: flex;
     flex-direction: row;
-    width: 70%;
+    gap: 0.8rem;
     justify-content: center;
     justify-content: flex-end;
 }
@@ -24,12 +24,10 @@
 .btns .blogs{
     display: flex;
     justify-content: center;
-    width: 80%;
 }
 
 .blogs .write{
     display: flex;
-    width: 40%;
     justify-content: center;
     background-color: blue;
     border-radius: 10px;
@@ -45,15 +43,14 @@
 }
 
 .btns .accessBtn{
-    width: 50%;
     justify-content: center;
+    gap: 0.8rem;
 }
 
 .btns .accessBtn,
 .access{
     display: flex;
     flex-direction: row;
-    width: 100%;
     justify-content: center;
 }
 
@@ -63,7 +60,6 @@
     background-color: aquamarine;
     border-radius: 10px;
     margin-right: 1rem;
-    width: 25%;
 }
 
 .log a{
@@ -97,7 +93,6 @@
 .denied{
     display: flex;
     justify-content: center;
-    width: 60%;
 }
 
 .denied a{
@@ -108,11 +103,67 @@
     font-weight: bolder;
     font-size: 1rem;
     border-radius: 10px;
-    width: 50%;
     text-align: center;
     cursor: pointer;
 }
 
+.hamburger {
+    font-size: 1.5rem;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
 .user i{
     cursor: pointer;
+}
+
+.mobile_btns {
+    display: none;
+}
+
+.options {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 0 1rem 0 2.5rem;
+    z-index: 5;
+}
+
+.options .menuCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 2rem;
+    padding: 2rem 0rem;
+}
+
+.mobile_ctas {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 1.5rem;
+}
+
+.mobile_ctas .accessBtn {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+@media screen and (max-width: 40rem) {
+    .mobile_btns {
+        display: flex;
+    }
+
+    .navbar .btns {
+        display: none;
+    }
 }
