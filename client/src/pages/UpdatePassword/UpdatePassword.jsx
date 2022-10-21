@@ -1,20 +1,34 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../Components/Headers/Navbar"
+import "./UpdatePassword.css"
 
-const UpdatePassword = ()=>{
+const UpdatePassword = () => {
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         const token = localStorage.getItem("token");
 
-        if(token){
-            navigate("/", {replace : true})
+        if (token) {
+            navigate("/", { replace: true })
         }
     })
 
-    return(
+    return (
         <>
-            <h1>Update Password</h1> 
+            <Navbar />
+            <div className="update">
+                <div className="inner_div">
+                    <h1>Update Password</h1>
+                    <input
+                        type='text'
+                        placeholder="Enter Your Email"
+                    />
+
+                    <button>Send Otp</button>
+                </div>
+            </div>
+
         </>
     )
 }
