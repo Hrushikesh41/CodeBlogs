@@ -38,7 +38,6 @@
 
 .addBlog{
     display: flex;
-    width: 100vw;
     justify-content:center;
     padding: 2rem 0;
 }
