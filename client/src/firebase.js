@@ -3,12 +3,12 @@ import {getStorage} from "firebase/storage";
 
 
 const firebaseCofig = {
-    apiKey: "AIzaSyDC-s2HkvdZzr17ukXYJpdgCxW49DcWOdQ",
-    authDomain: "codeblogs-22b77.firebaseapp.com",
-    projectId: "codeblogs-22b77",
-    storageBucket: "codeblogs-22b77.appspot.com",
-    messagingSenderId: "106219115388",
-    appId:"1:106219115388:web:d799e96daebdfac8084af9"
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID
 }
 
 const app = initializeApp(firebaseCofig);
