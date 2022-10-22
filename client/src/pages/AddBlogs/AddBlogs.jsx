@@ -4,6 +4,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import storage from "../../firebase";
 import "./AddBlogs.css"
 import slugify from "slugify";
+import Navbar from "../../Components/Headers/Navbar";
 
 const AddBlogs = () => {
     const [progress, setProgress] = useState(0);
@@ -116,6 +117,7 @@ const AddBlogs = () => {
 
     return (
         <>
+            <Navbar />
             <div className="home">
                 <h1>Write Blogs</h1>
                 <i className="fa fa-2x fa-home" onClick={handleRedirect}></i>
@@ -144,7 +146,7 @@ const AddBlogs = () => {
                         type="file"
                         accept="image/*"
                         id="image"
-                        style={{display: 'none'}}
+                        style={{ display: 'none' }}
                     />
 
                     <button>Upload</button>

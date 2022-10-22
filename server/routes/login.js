@@ -12,12 +12,11 @@ router.post("/logblogger", async (req, res)=>{
         return res.status(500).json({error : "Please Enter All Required Feilds"})
     }else{
         try {
-            const fetchUser = await userModels.findOne({email:email})
+            const fetchUser = await userModels.findOne({email:email});
 
             if(fetchUser){
                 const fetchpass = await bcrypt.compare(password, fetchUser.password)
                 const id = fetchUser._id
-
                 if(fetchpass){
                     const token = await fetchUser.generateAuthToken();
                     return res.status(200).json({message : "Login Successful", token, id})
