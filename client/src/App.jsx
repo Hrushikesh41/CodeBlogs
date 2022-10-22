@@ -9,11 +9,11 @@ import BlogCard from './Components/BlogCard/BlogCard'
 import BlogPage from './pages/BlogPage/BlogPage'
 import Profile from './pages/Profile/Profile'
 import UpdatePassword from './pages/UpdatePassword/UpdatePassword'
+import VerifyOtp from './pages/UpdatePassword/VerifyOtp'
+import NewPassword from './pages/UpdatePassword/NewPassword'
 import "./index.css"
 
-
 function App() {
-  
 
   return (
     <>
@@ -28,6 +28,8 @@ function App() {
           <Route exact path='/blog/:slug' element={<BlogPage />} />
           <Route exact path='/profile' element={<Profile />} />
           <Route exact path='/update' element={<UpdatePassword />} />
+          <Route exact path='/auth' element={<VerifyOtp />} />
+          <Route exact path='/new' element={<NewPassword />} />
         </Routes>
       </BrowserRouter>
     </>
