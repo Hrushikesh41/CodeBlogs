@@ -85,7 +85,7 @@ const AddBlogs = () => {
 
         console.log(imageURL);
 
-        fetch(`${url}.netlify/functions/api/addblog`, {
+        fetch(`${url.base}.netlify/functions/api/addblog`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

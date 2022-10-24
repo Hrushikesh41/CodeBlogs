@@ -15,7 +15,7 @@ const BlogCard = ({ blogContent }) => {
 
     const getBlogData = async () => {
 
-        const res = await fetch(`${url}.netlify/functions/api/getblogbyid`, {
+        const res = await fetch(`${url.base}.netlify/functions/api/getblogbyid`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -39,7 +39,7 @@ const BlogCard = ({ blogContent }) => {
 
     const updatedlikes = async () => {
 
-        const res = await fetch(`${url}.netlify/functions/api/updatelikes`, {
+        const res = await fetch(`${url.base}.netlify/functions/api/updatelikes`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

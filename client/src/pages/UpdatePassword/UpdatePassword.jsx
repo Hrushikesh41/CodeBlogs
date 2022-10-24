@@ -36,7 +36,7 @@ const UpdatePassword = () => {
                 progress: undefined,
             });
         } else {
-            const res = await fetch(`${url}.netlify/functions/api/updatepassword`, {
+            const res = await fetch(`${url.base}.netlify/functions/api/updatepassword`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

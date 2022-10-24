@@ -28,7 +28,7 @@ export const NewPassword = () => {
                 progress: undefined,
             });
         }else{
-            const res = await fetch(`${url}.netlify/functions/api/newpassword`, {
+            const res = await fetch(`${url.base}.netlify/functions/api/newpassword`, {
                 method : "POST",
                 headers : {
                     "Content-Type" : "application/json"

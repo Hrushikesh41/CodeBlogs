@@ -30,7 +30,7 @@ const VerifyOtp = () => {
                 progress: undefined,
             });
         } else {
-            const res = await fetch(`${url}.netlify/functions/api/verifycode`, {
+            const res = await fetch(`${url.base}.netlify/functions/api/verifycode`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

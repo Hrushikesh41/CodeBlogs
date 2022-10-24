@@ -21,7 +21,7 @@ const Profile = () => {
 
     const getUserBlogs = async (id, createdby) => {
 
-        const res = await fetch(`${url}.netlify/functions/api/userblogs`, {
+        const res = await fetch(`${url.base}.netlify/functions/api/userblogs`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

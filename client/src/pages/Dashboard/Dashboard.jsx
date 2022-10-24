@@ -10,7 +10,7 @@ const Dashboard = () => {
 
     const getBlogs = async () => {
         try {
-            const res = await fetch(`${url}.netlify/functions/api/getblog`, {
+            const res = await fetch(`${url.base}.netlify/functions/api/getblog`, {
                 method: "GET",
                 credentials: "include",
                 headers: {
