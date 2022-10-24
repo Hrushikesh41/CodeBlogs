@@ -39,7 +39,8 @@ const Login = ()=>{
             const res = await fetch(`${url.base}.netlify/functions/api/logblogger`, {
                 method : "POST",
                 headers : {
-                    "Content-Type" : "application/json"
+                    "Content-Type" : "application/json",
+                    "Allow-Access-Control-Origin" : "*"
                 },
                 body: JSON.stringify({
                     email, password
