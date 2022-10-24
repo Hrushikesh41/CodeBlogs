@@ -12,7 +12,6 @@ const Dashboard = () => {
         try {
             const res = await fetch(`${url.base}.netlify/functions/api/getblog`, {
                 method: "GET",
-                credentials: "include",
                 headers: {
                     "Content-Type": "application/json"
                 }
