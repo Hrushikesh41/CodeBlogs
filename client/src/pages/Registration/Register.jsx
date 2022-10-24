@@ -63,7 +63,7 @@ const Registration = () => {
 
             const { name, email, password } = details;
 
-            const res = await fetch(`${url}.netlify/functions/api/addblogger`, {
+            const res = await fetch(`${url.base}.netlify/functions/api/addblogger`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
