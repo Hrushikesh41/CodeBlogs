@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import BlogCard from "../../Components/BlogCard/BlogCard";
 import "./Profile.css"
 import Navbar from "../../Components/Headers/Navbar";
+import url from "../../domain";
 
 const Profile = () => {
     var token;
@@ -20,7 +21,7 @@ const Profile = () => {
 
     const getUserBlogs = async (id, createdby) => {
 
-        const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/userblogs", {
+        const res = await fetch(`${url}.netlify/functions/api/userblogs`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -3,6 +3,7 @@ import Navbar from '../../Components/Headers/Navbar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import url from '../../domain';
 
 export const NewPassword = () => {
     const[password, setPassword] = useState();
@@ -27,7 +28,7 @@ export const NewPassword = () => {
                 progress: undefined,
             });
         }else{
-            const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/newpassword", {
+            const res = await fetch(`${url}.netlify/functions/api/newpassword`, {
                 method : "POST",
                 headers : {
                     "Content-Type" : "application/json"

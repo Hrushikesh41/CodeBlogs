@@ -4,6 +4,7 @@ import "./Register.css"
 import bg1 from "../../assets/bg1.jpg"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import url from "../../domain";
 
 
 const Registration = () => {
@@ -61,7 +62,7 @@ const Registration = () => {
 
             const { name, email, password } = details;
 
-            const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/addblogger", {
+            const res = await fetch(`${url}.netlify/functions/api/addblogger`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

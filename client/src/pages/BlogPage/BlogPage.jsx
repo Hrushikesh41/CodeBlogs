@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLinkClickHandler, useNavigate, useParams } from "react-router-dom";
 import BlogCard from "../../Components/BlogCard/BlogCard";
 import Navbar from "../../Components/Headers/Navbar"
+import url from "../../domain";
 
 const BlogPage = () => {
     const {slug} = useParams();
@@ -12,7 +13,7 @@ const BlogPage = () => {
     const getBlog = async () => {
         
 
-        const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/getblogbyid", {
+        const res = await fetch(`${url}.netlify/functions/api/getblogbyid`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

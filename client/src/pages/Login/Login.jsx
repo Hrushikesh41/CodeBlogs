@@ -4,6 +4,7 @@ import "./Login.css"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import url from "../../domain";
 
 const Login = ()=>{
 
@@ -35,7 +36,7 @@ const Login = ()=>{
 
             const {email , password } = info;
 
-            const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/logblogger", {
+            const res = await fetch(`${url}.netlify/functions/api/logblogger`, {
                 method : "POST",
                 headers : {
                     "Content-Type" : "application/json"

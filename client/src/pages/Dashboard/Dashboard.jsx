@@ -3,13 +3,14 @@ import BlogCard from "../../Components/BlogCard/BlogCard";
 import Navbar from "../../Components/Headers/Navbar";
 import HomeBlogCard from "../../Components/BlogCard/HomeBlogCard";
 import "./Dashboard.css"
+import url from "../../domain";
 
 const Dashboard = () => {
     const [blogDetails, setBlogDetails] = useState([]);
 
     const getBlogs = async () => {
         try {
-            const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/getblog", {
+            const res = await fetch(`${url}.netlify/functions/api/getblog`, {
                 method: "GET",
                 credentials: "include",
                 headers: {

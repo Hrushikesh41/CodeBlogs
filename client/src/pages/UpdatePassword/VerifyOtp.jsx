@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 import otpImg from "../../assets/otp.png"
+import url from "../../domain";
 
 const VerifyOtp = () => {
     const [otp, setOtp] = useState("");
@@ -29,7 +30,7 @@ const VerifyOtp = () => {
                 progress: undefined,
             });
         } else {
-            const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/verifycode", {
+            const res = await fetch(`${url}.netlify/functions/api/verifycode`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

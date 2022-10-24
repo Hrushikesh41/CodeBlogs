@@ -5,6 +5,7 @@ import storage from "../../firebase";
 import "./AddBlogs.css"
 import slugify from "slugify";
 import Navbar from "../../Components/Headers/Navbar";
+import url from "../../domain";
 
 const AddBlogs = () => {
     const [progress, setProgress] = useState(0);
@@ -84,7 +85,7 @@ const AddBlogs = () => {
 
         console.log(imageURL);
 
-        fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/addblog", {
+        fetch(`${url}.netlify/functions/api/addblog`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

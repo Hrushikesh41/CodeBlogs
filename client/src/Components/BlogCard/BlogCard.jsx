@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./BlogCard.css"
+import url from "../../domain";
 
 const BlogCard = ({ blogContent }) => {
 
@@ -14,7 +15,7 @@ const BlogCard = ({ blogContent }) => {
 
     const getBlogData = async () => {
 
-        const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/getblogbyid", {
+        const res = await fetch(`${url}.netlify/functions/api/getblogbyid`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -38,7 +39,7 @@ const BlogCard = ({ blogContent }) => {
 
     const updatedlikes = async () => {
 
-        const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/updatelikes", {
+        const res = await fetch(`${url}.netlify/functions/api/updatelikes`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
