@@ -61,7 +61,7 @@ const Registration = () => {
 
             const { name, email, password } = details;
 
-            const res = await fetch("http://localhost:3000/addblogger", {
+            const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/addblogger", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

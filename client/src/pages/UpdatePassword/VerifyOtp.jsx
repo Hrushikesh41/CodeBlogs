@@ -29,7 +29,7 @@ const VerifyOtp = () => {
                 progress: undefined,
             });
         } else {
-            const res = await fetch("http://localhost:3000/verifycode", {
+            const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/verifycode", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

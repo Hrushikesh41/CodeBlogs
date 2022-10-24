@@ -12,7 +12,7 @@ const BlogPage = () => {
     const getBlog = async () => {
         
 
-        const res = await fetch("http://localhost:3000/getblogbyid", {
+        const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/getblogbyid", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

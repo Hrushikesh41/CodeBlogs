@@ -35,7 +35,7 @@ const UpdatePassword = () => {
                 progress: undefined,
             });
         } else {
-            const res = await fetch("http://localhost:3000/updatepassword", {
+            const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/updatepassword", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

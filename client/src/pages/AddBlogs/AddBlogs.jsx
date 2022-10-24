@@ -84,7 +84,7 @@ const AddBlogs = () => {
 
         console.log(imageURL);
 
-        fetch("http://localhost:3000/addblog", {
+        fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/addblog", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

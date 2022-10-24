@@ -14,7 +14,7 @@ const BlogCard = ({ blogContent }) => {
 
     const getBlogData = async () => {
 
-        const res = await fetch("http://localhost:3000/getblogbyid", {
+        const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/getblogbyid", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -38,7 +38,7 @@ const BlogCard = ({ blogContent }) => {
 
     const updatedlikes = async () => {
 
-        const res = await fetch("http://localhost:3000/updatelikes", {
+        const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/updatelikes", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

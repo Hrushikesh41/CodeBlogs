@@ -9,7 +9,7 @@ const Dashboard = () => {
 
     const getBlogs = async () => {
         try {
-            const res = await fetch("http://localhost:3000/getblog", {
+            const res = await fetch("https://server--codeblog-server.netlify.app/.netlify/functions/api/getblog", {
                 method: "GET",
                 credentials: "include",
                 headers: {
