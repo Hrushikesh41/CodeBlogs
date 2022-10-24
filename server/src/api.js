@@ -113,7 +113,7 @@ router.post("/userblogs", async (req, res)=>{
     }
 });
 
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
     res.send("Hello Bloggers")
 });
 
