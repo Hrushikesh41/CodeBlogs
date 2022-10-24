@@ -35,7 +35,7 @@ app.use(require("./routes/getBlogs"));
 app.use(require("./routes/getUserBlog"));
 app.use(require("./routes/UpdateLikes"));
 
-app.post("/", (req, res) => {
+app.get("/", (req, res) => {
     res.send("Hello Bloggers")
 });
 
