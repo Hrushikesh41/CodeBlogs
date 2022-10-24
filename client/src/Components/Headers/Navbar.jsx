@@ -23,12 +23,12 @@ const Navbar = () => {
         localStorage.removeItem("ID")
     }
 
-    const handleSetShow = ()=>{
-        setShowUser((prev)=>{
+    const handleSetShow = () => {
+        setShowUser((prev) => {
             return !prev
         })
 
-        navigate("/profile", {replace : true})
+        navigate("/profile", { replace: true })
     }
 
     function handleMobileNav() {
@@ -73,13 +73,14 @@ const Navbar = () => {
 
                 <div className="mobile_btns" ref={mobileNav}>
                     <div className="hamburger" ref={hamburger} onClick={handleMobileNav}><i className="fa-solid fa-bars"></i></div>
-                    <div className="options" style={{display: 'none'}} ref={mobileNavOptions}>
+                    <div className="options" style={{ display: 'none' }} ref={mobileNavOptions}>
                         <div className="menuCloseBtn" onClick={handleMobileNav}><i className="fa-solid fa-xmark"></i></div>
                         <div className="mobile_ctas">
                             <div className="blogs">
-                                <div className="write">
+                                {auth ? null : <div className="write">
                                     <a href="/write">Write Blog</a>
-                                </div>
+                                </div>}
+
                             </div>
                             <div className="accessBtn">
                                 {auth ? <>

@@ -1,169 +1,177 @@
-.navbar{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 8px 6px -6px black;
-    padding: 1rem;
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 6px -6px black;
+  padding: 1rem;
 }
 
-.navbar .title{
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 1rem;
+.navbar .title {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 1rem;
 }
 
-.navbar .btns{
-    display: flex;
-    flex-direction: row;
-    gap: 0.8rem;
-    justify-content: center;
-    justify-content: flex-end;
+.navbar .btns {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  justify-content: center;
+  justify-content: flex-end;
 }
 
-.btns .blogs{
-    display: flex;
-    justify-content: center;
+.btns .blogs {
+  display: flex;
+  justify-content: center;
 }
 
-.blogs .write{
-    display: flex;
-    justify-content: center;
-    background-color: blue;
-    border-radius: 10px;
+.blogs .write {
+  display: flex;
+  justify-content: center;
+  background-color: blue;
+  border-radius: 10px;
 }
 
-.blogs .write a{
-    padding: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-    font-weight: bolder;
-    font-size: 1rem;
+.blogs .write a {
+  padding: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  font-size: 1rem;
 }
 
-.btns .accessBtn{
-    justify-content: center;
-    gap: 0.8rem;
+.btns .accessBtn {
+  justify-content: center;
+  gap: 0.8rem;
 }
 
 .btns .accessBtn,
-.access{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.access {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.accessBtn .access .log{
-    display: flex;
-    justify-content: center;
-    background-color: aquamarine;
-    border-radius: 10px;
-    margin-right: 1rem;
+.accessBtn .access .log {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin-right: 1rem;
 }
 
-.log a{
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 1rem;
-    font-weight: bolder;
+.log a {
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: black;
+  padding: 1rem;
+  font-weight: bolder;
 }
 
-.reg{
-    display: flex;
-    justify-content: center;
-    background-color: cornflowerblue;
-    border-radius: 10px;
-    margin-right: 1rem;
-    width: 25%;
-    margin-left: 1rem;
+.reg {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin-right: 1rem;
+  width: 36%;
+  margin-left: 1rem;
 }
 
-.reg a{
-    border-radius: 10px;
-    padding: 1rem;
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: bolder;
+.reg a {
+  border-radius: 10px;
+  padding: 1rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: bolder;
 }
 
-.denied{
-    display: flex;
-    justify-content: center;
+.denied {
+  display: flex;
+  justify-content: center;
 }
 
-.denied a{
-    background-color: crimson;
-    padding: 1rem;
-    text-decoration: none;
-    color: white;
-    font-weight: bolder;
-    font-size: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
+.denied a {
+  padding: 1rem;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: 1rem;
+  border-radius: 10px;
+  color: black;
+  text-align: center;
+  cursor: pointer;
 }
 
 .hamburger {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .user {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.user i{
-    cursor: pointer;
+.user i {
+  cursor: pointer;
 }
 
 .mobile_btns {
-    display: none;
+  display: none;
 }
 
 .options {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    padding: 0 1rem 0 2.5rem;
-    z-index: 5;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 0 1rem 0 2.5rem;
+  z-index: 5;
 }
 
 .options .menuCloseBtn {
-    display: flex;
-    justify-content: flex-end;
-    font-size: 2rem;
-    padding: 2rem 0rem;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 2rem;
+  padding: 2rem 0rem;
 }
 
 .mobile_ctas {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-end;
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 1.5rem;
 }
 
 .mobile_ctas .accessBtn {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 @media screen and (max-width: 40rem) {
-    .mobile_btns {
-        display: flex;
-    }
+  .mobile_btns {
+    display: flex;
+  }
 
-    .navbar .btns {
-        display: none;
-    }
+  .navbar .btns {
+    display: none;
+  }
+
+  .btns .accessBtn,
+  .access {
+    flex-direction: column;
+  }
+
+  .reg{
+    width: 100%;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
 }

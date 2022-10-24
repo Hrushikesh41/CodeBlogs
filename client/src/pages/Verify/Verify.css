@@ -64,3 +64,19 @@
     align-items: center;
     gap: 2rem;
 }
+
+@media screen and (max-width : 1000px) {
+    .app-content{
+        flex-direction: column;
+    }
+
+    .app-content .image{
+        width: 100%;
+    }
+
+    .app-content .verify-section{
+        width: 90%;
+        margin-top: 1rem;
+        margin-bottom: 6rem;
+    }
+}
