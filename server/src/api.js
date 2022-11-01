@@ -10,6 +10,8 @@ const nodemailer = require("nodemailer");
 
 const app = express();
 
+app.use(cors())
+
 // app.use(function (req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*");
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -28,7 +30,7 @@ dotenv.config({ path: "config.env" });
 
 const PORT = process.env.PORT || 3001;
 
-router.post("/addblog", async (req,res)=>{
+router.post("/addblog", cors(), async (req,res)=>{
     const {title, imageURL, blog, slug, id} = req.body;
     let slugifiedTitle = slug
     let likes = 0;
@@ -57,7 +59,7 @@ router.post("/addblog", async (req,res)=>{
     }
 });
 
-router.get("/getblog", async (req, res)=>{
+router.get("/getblog", cors(), async (req, res)=>{
     blogs = 10;
 
     try{
@@ -70,7 +72,7 @@ router.get("/getblog", async (req, res)=>{
 
 });
 
-router.post("/getblogbyid", async (req, res)=>{
+router.post("/getblogbyid", cors(), async (req, res)=>{
     const {slug} = req.body;
 
     try {
@@ -87,7 +89,7 @@ router.post("/getblogbyid", async (req, res)=>{
     }
 });
 
-router.post("/userblogs", async (req, res)=>{
+router.post("/userblogs", cors(), async (req, res)=>{
     const id = req.body.id;
     const createdby = req.body.createdby;
 
@@ -113,11 +115,11 @@ router.post("/userblogs", async (req, res)=>{
     }
 });
 
-router.get("/", (req, res) => {
+router.get("/", cors(), (req, res) => {
     res.send("Hello Bloggers")
 });
 
-router.post("/logblogger", async (req, res)=>{
+router.post("/logblogger", cors(), async (req, res)=>{
     const {email, password} = req.body;
 
     if(!email || !password){
@@ -157,7 +159,7 @@ const userDetais = {
     password : ""
 }
 
-router.post("/addblogger", async(req, res)=>{
+router.post("/addblogger", cors(), async(req, res)=>{
     const {name , email, password} = req.body;
 
     userDetais.name = name;
@@ -205,7 +207,7 @@ router.post("/addblogger", async(req, res)=>{
     }
 });
 
-router.post("/verifyotp", (req, res)=>{
+router.post("/verifyotp", cors(), (req, res)=>{
     const verifyPin = req.body;
 
     if(pin != verifyPin.otp){
@@ -248,7 +250,7 @@ router.post("/verifyotp", (req, res)=>{
     }
 });
 
-router.post("/updatelikes", async(req, res)=>{
+router.post("/updatelikes", cors(), async(req, res)=>{
     const {id, likes, reactions} = req.body;
     
     let updateLikes ;
@@ -277,7 +279,7 @@ router.post("/updatelikes", async(req, res)=>{
     
 });
 
-router.post("/updatepassword", (req, res) => {
+router.post("/updatepassword", cors(), (req, res) => {
     const email = req.body.email;
     
     if (!email) {
@@ -316,7 +318,7 @@ router.post("/updatepassword", (req, res) => {
 
 })
 
-router.post("/verifycode", async (req, res) => {
+router.post("/verifycode", cors(), async (req, res) => {
     const otp = req.body.otp;
     console.log(otp);
 
@@ -336,7 +338,7 @@ router.post("/verifycode", async (req, res) => {
 
 });
 
-router.post("/newpassword", async(req, res)=>{
+router.post("/newpassword", cors(), async(req, res)=>{
     const password = req.body.password;
 
     if(!password){
