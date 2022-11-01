@@ -10,13 +10,7 @@ const Dashboard = () => {
 
     const getBlogs = async () => {
         try {
-            const res = await fetch(`${url.base}.netlify/functions/api/getblog`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            });
-
+            const res = await fetch(`${url.base}.netlify/functions/api/getblog`);
             const data = await res.json();
             console.log(data);
             if (res.status == 200) {
