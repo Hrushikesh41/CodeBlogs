@@ -23,6 +23,13 @@ const app = express();
 //     next();
 // });
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+});
+
 // app.use(cors({
 //     origin: ["http://localhost:3000", "http://localhost:5173", "https://codeblogshrushikesh.netlify.app/", "*"],
 //     methods: ["GET", "POST"],
@@ -125,8 +132,8 @@ router.get("/", (req, res) => {
 });
 
 router.post("/logblogger", async (req, res)=>{
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // res.header('Access-Control-Allow-Origin', '*');
+    // res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     const {email, password} = req.body;
 
     if(!email || !password){
