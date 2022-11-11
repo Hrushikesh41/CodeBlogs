@@ -14,7 +14,7 @@ const UpdatePassword = () => {
         const token = localStorage.getItem("token");
         console.log(token);
 
-        if (token || token !== undefined) {
+        if (token != null || token || token != undefined) {
             navigate("/", { replace: true })
         }
     });
