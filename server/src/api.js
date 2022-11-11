@@ -181,7 +181,7 @@ router.post("/loguser", async (req, res)=>{
                     reqStatus = "success"
                     // return res.status(200).json({message : "Login Successful", token, id})
                 }else{
-                    reqStatus = "invalid"
+                    reqStatus = "invalid Password"
                     // return res.status(404).json({error : "invalid Password"})
                 }
             }else{
@@ -199,6 +199,9 @@ router.post("/loguser", async (req, res)=>{
                 break;
             case "success":
                 res.status(200).json({message : "Login Successful", token, id});
+                break;
+                case "invalid password":
+                res.status(404).json({error : "Invalid Password"})
                 break;
             case "invalid":
                 res.status(404).json({error : "invalid user or Password"});
