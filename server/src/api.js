@@ -171,18 +171,19 @@ router.post("/loguser", async (req, res)=>{
             const fetchUser = await userModels.findOne({email:email})
 
             if(fetchUser){
-                const fetchpass = await bcrypt.compare(password, fetchUser.password)
-                console.log("fetchpass" + fetchpass);
-                id = fetchUser._id
+                reqStatus = 'success'
+                // const fetchpass = await bcrypt.compare(password, fetchUser.password)
+                // console.log("fetchpass" + fetchpass);
+                // id = fetchUser._id
 
-                if(fetchpass){
-                    token = await fetchUser.generateAuthToken();
-                    reqStatus = "success"
-                    // return res.status(200).json({message : "Login Successful", token, id})
-                }else{
-                    reqStatus = "invalid"
-                    // return res.status(404).json({error : "invalid Password"})
-                }
+                // if(fetchpass){
+                //     token = await fetchUser.generateAuthToken();
+                //     reqStatus = "success"
+                //     // return res.status(200).json({message : "Login Successful", token, id})
+                // }else{
+                //     reqStatus = "invalid"
+                //     // return res.status(404).json({error : "invalid Password"})
+                // }
             }else{
                 reqStatus = "invalid"
                 // return res.status(404).json({error : "No User Found !!! Please Create an Account"})
