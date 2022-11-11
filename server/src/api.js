@@ -7,7 +7,7 @@ const blogModel = require("./models/blogs.model")
 const router = require("express").Router();
 const serverless = require("serverless-http");
 const nodemailer = require("nodemailer");
-
+const bcrypt = require('bcryptjs')
 const app = express();
 
 // res.header("Access-Control-Allow-Origin", "*");
@@ -173,9 +173,10 @@ router.post("/loguser", async (req, res)=>{
             if(fetchUser){
                 // reqStatus = 'success'
                 const fetchpass = await bcrypt.compare(password, fetchUser.password)
-                console.log("fetchpass" + fetchpass);
+                // console.log("fetchpass" + fetchpass);
                 // id = fetchUser._id
 
+                by
                 if(fetchpass){
                     // token = await fetchUser.generateAuthToken();
                     reqStatus = "success"
