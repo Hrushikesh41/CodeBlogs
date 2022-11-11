@@ -32,7 +32,7 @@ const Profile = () => {
         });
 
         const blogData = await res.json();
-        console.log(blogData);
+        console.log(blogData.blogs);
 
         setDetails({
             name: blogData.name,
