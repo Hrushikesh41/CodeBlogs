@@ -10,9 +10,6 @@ const nodemailer = require("nodemailer");
 
 const app = express();
 
-// app.use(cors())
-
-
 // res.header("Access-Control-Allow-Origin", "*");
 // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
@@ -23,12 +20,12 @@ const app = express();
 //     next();
 // });
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    next();
-});
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//     next();
+// });
 
 // app.use(cors({
 //     origin: ["http://localhost:3000", "http://localhost:5173", "https://codeblogshrushikesh.netlify.app/", "*"],
@@ -39,6 +36,8 @@ app.use(function(req, res, next) {
 
 app.use(express.json());
 dotenv.config({ path: "config.env" });
+
+app.use(cors())
 
 const PORT = process.env.PORT || 3001;
 
@@ -137,7 +136,7 @@ router.post("/loguser", async (req, res)=>{
     const {email, password} = req.body;
 
     if(!email || !password){
-        return res.status(500).json({error : "Please Enter All Required Feilds"})
+        res.status(500).json({error : "Please Enter All Required Feilds"})
     }else{
         try {
             const fetchUser = await userModels.findOne({email:email});
@@ -147,15 +146,16 @@ router.post("/loguser", async (req, res)=>{
                 const id = fetchUser._id
                 if(fetchpass){
                     const token = await fetchUser.generateAuthToken();
-                    return res.status(200).json({message : "Login Successful", token, id})
+                    res.status(200).json({message : "Login Successful", token, id})
                 }else{
-                    return res.status(404).json({error : "invalid Password"})
+                    res.status(404).json({error : "invalid Password"})
                 }
             }else{
-                return res.status(404).json({error : "No User Found !!! Please Create an Account"})
+                res.status(404).json({error : "No User Found !!! Please Create an Account"})
             }
         } catch (error) {
             console.log(error);
+            res.status(500).json({message: error})
         }
     }
 });
