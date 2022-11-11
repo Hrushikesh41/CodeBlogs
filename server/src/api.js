@@ -174,8 +174,6 @@ router.post("/loguser", async (req, res)=>{
                 const fetchpass = await bcrypt.compare(password, fetchUser.password)
                 // console.log("fetchpass" + fetchpass);
                 // id = fetchUser._id
-
-                by
                 if(fetchpass){
                     // token = await fetchUser.generateAuthToken();
                     reqStatus = "success"
