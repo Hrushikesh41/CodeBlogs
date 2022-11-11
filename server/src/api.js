@@ -109,9 +109,9 @@ router.post("/userblogs", async (req, res)=>{
     }
     else{
         try {
-            const blog = await blogModel.find({CreadtedBy:createdby});
             const user = await userModels.findOne({_id:id})
             const name = user.name;
+            const blog = await blogModel.find({CreadtedBy:name});
             const email = user.email;
             const blogs = user.blogs
             const blogsTitle = await blog;
