@@ -419,7 +419,7 @@ router.post("/newpassword", async(req, res)=>{
 
             if (fetchEmail) {
                 const hashPass = await bcrypt.hash(password, 12);
-                const update = await user.findOneAndUpdate({ email: email }, { password:hashPass }, { new: true });
+                const update = await userModels.findOneAndUpdate({ email: email }, { password:hashPass }, { new: true });
                 const result = await update.save();
 
                 if (result) {
