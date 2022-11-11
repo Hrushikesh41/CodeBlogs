@@ -135,27 +135,79 @@ router.post("/loguser", async (req, res)=>{
     // res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     const {email, password} = req.body;
 
+    // if(!email || !password){
+    //     res.status(500).json({error : "Please Enter All Required Feilds"})
+    // }else{
+    //     try {
+    //         const fetchUser = await userModels.findOne({email:email});
+
+    //         if(fetchUser){
+    //             const fetchpass = await bcrypt.compare(password, fetchUser.password)
+    //             const id = fetchUser._id
+    //             if(fetchpass){
+    //                 const token = await fetchUser.generateAuthToken();
+    //                 res.status(200).json({message : "Login Successful", token, id})
+    //             }else{
+    //                 res.status(404).json({error : "invalid Password"})
+    //             }
+    //         }else{
+    //             res.status(404).json({error : "No User Found !!! Please Create an Account"})
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //         res.status(500).json({message: error})
+    //     }
+    // }
+
+    let reqStatus = ""
+    let token = ""
+    let id = ""
+
     if(!email || !password){
-        res.status(500).json({error : "Please Enter All Required Feilds"})
+        reqStatus = "incomplete"
+        // return res.status(500).json({error : "Please Enter All Required Feilds"})
     }else{
         try {
-            const fetchUser = await userModels.findOne({email:email});
+            const fetchUser = await userModels.findOne({email:email})
 
             if(fetchUser){
                 const fetchpass = await bcrypt.compare(password, fetchUser.password)
-                const id = fetchUser._id
+                console.log("fetchpass" + fetchpass);
+                id = fetchUser._id
+
                 if(fetchpass){
-                    const token = await fetchUser.generateAuthToken();
-                    res.status(200).json({message : "Login Successful", token, id})
+                    token = await fetchUser.generateAuthToken();
+                    reqStatus = "success"
+                    // return res.status(200).json({message : "Login Successful", token, id})
                 }else{
-                    res.status(404).json({error : "invalid Password"})
+                    reqStatus = "invalid"
+                    // return res.status(404).json({error : "invalid Password"})
                 }
             }else{
-                res.status(404).json({error : "No User Found !!! Please Create an Account"})
+                reqStatus = "invalid"
+                // return res.status(404).json({error : "No User Found !!! Please Create an Account"})
             }
         } catch (error) {
+            reqStatus = "serverError"
             console.log(error);
-            res.status(500).json({message: error})
+        }
+
+        switch (reqStatus) {
+            case "incomplete":
+                res.status(500).json({error : "Please Enter All Required Feilds"})
+                break;
+            case "success":
+                res.status(200).json({message : "Login Successful", token, id});
+                break;
+            case "invalid":
+                res.status(404).json({error : "invalid user or Password"});
+                break;
+            case "serverError":
+                res.status(500).json({error : "server error"})
+                break;
+            default:
+                res.status(500).json({error : "unexpected error"})
+                break;
         }
     }
 });
