@@ -39,8 +39,8 @@ export const NewPassword = () => {
             });
 
             const result = await res.json();
-            console.log(result)
             const status = res.status;
+            console.log(result, status)
 
             if(status == 200){
                 navigate("/login", {replace : true})
