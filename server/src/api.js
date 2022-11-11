@@ -131,7 +131,7 @@ router.get("/", (req, res) => {
     res.send("Hello Bloggers")
 });
 
-router.post("/logblogger", async (req, res)=>{
+router.post("/loguser", async (req, res)=>{
     // res.header('Access-Control-Allow-Origin', '*');
     // res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     const {email, password} = req.body;

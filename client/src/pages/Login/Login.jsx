@@ -35,7 +35,7 @@ const Login = ()=>{
 
             const {email , password } = info;
 
-            const res = await fetch("http://localhost:3000/logblogger", {
+            const res = await fetch("http://localhost:3000/login", {
                 method : "POST",
                 headers : {
                     "Content-Type" : "application/json"
