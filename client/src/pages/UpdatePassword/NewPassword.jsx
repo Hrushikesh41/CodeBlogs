@@ -39,6 +39,7 @@ export const NewPassword = () => {
             });
 
             const result = await res.json();
+            console.log(result)
             const status = res.status;
 
             if(status == 200){
