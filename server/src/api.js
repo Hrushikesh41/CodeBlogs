@@ -50,7 +50,7 @@ router.post("/addblog", async (req,res)=>{
         return res.status(404).json({error : "Please Enter Title and Blog Content Fields"})
     }else{
         try {
-            const user = await userModel.findOneAndUpdate({_id : id}, {$push : {"blogs" : [title]}});
+            const user = await userModels.findOneAndUpdate({_id : id}, {$push : {"blogs" : [title]}});
 
             const CreadtedBy = await user.name;
             const upload = new blogModel({title, imageURL, blog, slugifiedTitle, likes, CreadtedBy});
