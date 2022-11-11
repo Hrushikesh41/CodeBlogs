@@ -13,7 +13,7 @@ const UpdatePassword = () => {
     useEffect(() => {
         const token = localStorage.getItem("token");
 
-        if (token !== undefined) {
+        if (token || token !== undefined) {
             navigate("/", { replace: true })
         }
     });
