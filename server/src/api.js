@@ -414,7 +414,7 @@ router.post("/newpassword", async(req, res)=>{
     }else{
         try {
             const email = emailDetails.to;
-            const fetchEmail = await user.findOne({ email: email });
+            const fetchEmail = await userModels.findOne({ email: email });
             console.log(fetchEmail)
 
             if (fetchEmail) {
