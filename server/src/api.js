@@ -52,7 +52,7 @@ router.post("/addblog", async (req,res)=>{
         try {
             const user = await userModels.findOneAndUpdate({_id : id}, {$push : {"blogs" : [title]}});
 
-            const CreadtedBy = await userModels.name;
+            const CreadtedBy = await user.name;
             const upload = new blogModel({title, imageURL, blog, slugifiedTitle, likes, CreadtedBy});
             var result = await upload.save();
 
