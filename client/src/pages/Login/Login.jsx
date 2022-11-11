@@ -47,6 +47,7 @@ const Login = ()=>{
             });
 
             const result = await res.json();
+            console.log(result)
             const status = res.status;
             localStorage.setItem("token", result.token)
             localStorage.setItem("ID", result.id)
