@@ -110,7 +110,7 @@ router.post("/userblogs", async (req, res)=>{
     else{
         try {
             const blog = await blogModel.find({CreadtedBy:createdby});
-            const user = await userModel.findOne({_id:id})
+            const user = await userModels.findOne({_id:id})
             const name = user.name;
             const email = user.email;
             const blogsTitle = await blog;
