@@ -409,9 +409,6 @@ router.post("/verifycode", async (req, res) => {
 router.post("/newpassword", async(req, res)=>{
     const password = req.body.password;
 
-    // res.header('Access-Control-Allow-Origin', '*');
-    // res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
     if(!password){
         return res.status(404).json({error : "Enter New Password"})
     }else{
