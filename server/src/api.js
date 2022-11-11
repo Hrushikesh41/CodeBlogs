@@ -173,9 +173,9 @@ router.post("/loguser", async (req, res)=>{
                 // reqStatus = 'success'
                 const fetchpass = await bcrypt.compare(password, fetchUser.password)
                 // console.log("fetchpass" + fetchpass);
-                // id = fetchUser._id
+                id = fetchUser._id
                 if(fetchpass){
-                    // token = await fetchUser.generateAuthToken();
+                    token = await fetchUser.generateAuthToken();
                     reqStatus = "success"
                     // return res.status(200).json({message : "Login Successful", token, id})
                 }else{
