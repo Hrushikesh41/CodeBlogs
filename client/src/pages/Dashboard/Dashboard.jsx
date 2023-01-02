@@ -4,6 +4,7 @@ import Navbar from "../../Components/Headers/Navbar";
 import HomeBlogCard from "../../Components/BlogCard/HomeBlogCard";
 import "./Dashboard.css"
 import url from "../../domain";
+import {HashLoader} from "react-spinners"
 
 const Dashboard = () => {
     const [blogDetails, setBlogDetails] = useState([]);
@@ -36,7 +37,7 @@ const Dashboard = () => {
                 <form method="get">            
                         {blogDetails.length == 0 ? <>
                             <div className="notFound">
-                                No Blogs to display
+                                <HashLoader color="#36d7b7" />
                             </div>
                         </> :
                             blogDetails.map((blogContent, key) => {
