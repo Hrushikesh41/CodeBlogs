@@ -37,7 +37,10 @@ const Dashboard = () => {
                 <form method="get">            
                         {blogDetails.length == 0 ? <>
                             <div className="notFound">
-                                <HashLoader color="#36d7b7" />
+                                <HashLoader 
+                                color="#36d7b7" 
+                                size={100}
+                                />
                             </div>
                         </> :
                             blogDetails.map((blogContent, key) => {
